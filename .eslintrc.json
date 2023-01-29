@@ -1,0 +1,57 @@
+{
+  "root": true,
+  "extends": ["airbnb", "prettier", "next/core-web-vitals"],
+  "plugins": ["prettier"],
+  "rules": {
+    "import/no-import-module-exports": 0,
+    "import/extensions": 0,
+    "default-param-last": [0],
+    "react/function-component-definition": [0],
+    "import/prefer-default-export": 0,
+    "prettier/prettier": [
+      "warn",
+      {
+        "printWidth": 100,
+        "tabWidth": 2,
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "jsxBracketSameLine": false
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".jsx",
+          ".js"
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      0,
+      "FunctionExpression",
+      "WithStatement",
+      "BinaryExpression[operator='in']"
+    ],
+    "react/jsx-props-no-spreading": [0, {
+      "explicitSpread": "ignore"
+    }]
+  },
+  "settings": {
+    "import/extensions": [".js", ".jsx"]
+  },
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "intl": true,
+    "env": true,
+    "localStorage": true,
+    "sessionStorage": true,
+    "maplibregl": true,
+    "MaplibreGeocoder": true,
+    "dataLayer": true
+  }
+}
