@@ -102,6 +102,7 @@ const Detail = ({ dataDetail, setDataDetail, setIsDetailedOpened }) => {
                         setSelectedMedia(i);
                         setIsOpened(true);
                       }}
+                      style={{ cursor: 'pointer' }}
                       margin={1}
                     >
                       <Image
@@ -125,6 +126,7 @@ const Detail = ({ dataDetail, setDataDetail, setIsDetailedOpened }) => {
                         setSelectedMedia(i);
                         setIsOpened(true);
                       }}
+                      style={{ cursor: 'pointer' }}
                       margin={1}
                     >
                       <Image
