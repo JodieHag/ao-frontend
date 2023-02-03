@@ -38,7 +38,7 @@ const Detail = ({ dataDetail, setDataDetail, setIsDetailedOpened }) => {
         gridTemplateColumns="1fr 1fr 24px"
         gridGap={2}
       >
-        <Box marginRight={7} alignSelf="start" position="sticky" width="100%">
+        <Box marginRight={[2, 3, 7]} alignSelf="start" position="sticky" width="100%">
           <Text fontWeight="bold" sizeText="display24" marginBottom={1} color="red">
             {dataDetail?.address}
           </Text>

@@ -17,14 +17,14 @@ const Map = ({ setIsDetailedOpened, setDataDetail, setValue, defaultValue }) => 
     long1: '1.4877608315772193',
     long2: '2.8104393188023096',
   });
-  const { data: events } = useGetEventsByLocationQuery(location);
+  const { data: events, isLoading } = useGetEventsByLocationQuery(location);
   const [zoom, setZoom] = useState(7);
   const [defaultData, setDefaultData] = useState(null);
   const [geoJson, setGeoJson] = useState(null);
   const [map, setMap] = useState(null);
   const [renderPointsEvents, setRenderPointsEvents] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [center, setCenter] = useState([2.207504, 41.54359]);
+
   const asyncDefaultData = async () => {
     const newData = await mapperGeojsonExternalMapInfo(externalData, 'Feature');
     await setDefaultData(newData);
@@ -223,18 +223,16 @@ const Map = ({ setIsDetailedOpened, setDataDetail, setValue, defaultValue }) => 
         });
         map.on('sourcedata', (e) => {
           if (e.isSourceLoaded) {
-            setLoading(false);
+            // cargado
           } else {
-            setLoading(true);
+            // cargando
           }
         });
-        map.on('zoomend', (e, a) => {
+        map.on('zoomend', () => {
           // Do something when the source has finished loading
           const n = map.getBounds().toArray();
-          const zoom = map.getZoom();
-          const center = map.getCenter();
-          setZoom(zoom);
-          setCenter(center.toArray());
+          setZoom(map.getZoom());
+          setCenter(map.getCenter().toArray());
           setLocation({
             lat1: n[0][1],
             lat2: n[1][1],
@@ -242,12 +240,10 @@ const Map = ({ setIsDetailedOpened, setDataDetail, setValue, defaultValue }) => 
             long2: n[1][0],
           });
         });
-        map.on('dragend', (e, a) => {
+        map.on('dragend', () => {
           const n = map.getBounds().toArray();
-          const zoom = map.getZoom();
-          const center = map.getCenter();
-          setZoom(zoom);
-          setCenter(center.toArray());
+          setZoom(map.getZoom());
+          setCenter(map.getCenter().toArray());
           setLocation({
             lat1: n[0][1],
             lat2: n[1][1],
@@ -325,7 +321,7 @@ const Map = ({ setIsDetailedOpened, setDataDetail, setValue, defaultValue }) => 
 
   return (
     <>
-      {loading ? <Loader /> : null}
+      {isLoading ? <Loader /> : null}
       <Box
         id="mapAO"
         style={{

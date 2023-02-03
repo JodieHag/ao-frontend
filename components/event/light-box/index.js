@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { Modal } from '@jellybrains/marvin/dist/molecules/Modal';
 import { Box, Flex } from '@jellybrains/marvin/dist/atoms/Layout';
 import { Icon } from '@jellybrains/marvin/dist/atoms/Icon';
-import IconArrowLeft from '@jellybrains/marvin/dist/atoms/Icons/IconArrowLeft';
+import IconChevronLeft from '@jellybrains/marvin/dist/atoms/Icons/IconChevronLeft';
 import { VideoPlayer } from '@jellybrains/marvin/dist/molecules/VideoPlayer';
 import { Text } from '@jellybrains/marvin/dist/atoms/Typography';
 import { Image } from '@jellybrains/marvin/dist/atoms/Image';
-import IconArrowRight from '@jellybrains/marvin/dist/atoms/Icons/IconArrowRight';
+import IconChevronRight from '@jellybrains/marvin/dist/atoms/Icons/IconChevronRight';
 
 const LightBoxDetail = ({ medias, isOpened, setIsOpened, selectedMedia, setSelectedMedia }) => {
   const goToRight = () => {
@@ -46,33 +46,38 @@ const LightBoxDetail = ({ medias, isOpened, setIsOpened, selectedMedia, setSelec
       display="block"
     >
       {isOpened && (
-        <Flex flexDirection="column" alignItems="center" width="100%" height="100%" padding={3}>
+        <Flex
+          flexDirection="column"
+          alignItems="center"
+          width="100%"
+          height="100%"
+          padding={[1, 2, 3]}
+        >
           <Flex alignItems="center" width="100%" height="100%" justifyContent="space-between">
             {(selectedMedia > 0 && (
               <Icon
-                color="purple"
-                sizeIcon="display45"
+                color="blue"
+                sizeIcon={['display36', 'display36', 'display48']}
                 onClick={() => goToLeft()}
                 style={{ cursor: 'pointer' }}
               >
-                <IconArrowLeft />
+                <IconChevronLeft />
               </Icon>
-            )) || <Box width={45} height={45} />}
+            )) || <Box width={[36, 36, 48]} height={[36, 36, 48]} />}
 
             <Flex
               alignItems="center"
-              maxWidth={950}
+              maxWidth={['calc(100% - 72px)', 'calc(100% - 72px)', 'calc(100% - 96px)', 950]}
               width="100%"
-              minWidth={['100%', 550, 750, 950]}
               height={['100%']}
               justifyContent="center"
             >
               {medias[selectedMedia]?.type === 'image' && (
                 <Image
                   src={medias[selectedMedia].src}
-                  maxWidth={950}
+                  maxWidth={[270, 550, 750, 950]}
                   width="100%"
-                  minWidth={[350, 550, 750, 950]}
+                  minWidth={[270, 550, 750, 950]}
                   height={[516, 516, 716]}
                 />
               )}
@@ -81,7 +86,7 @@ const LightBoxDetail = ({ medias, isOpened, setIsOpened, selectedMedia, setSelec
                   src={medias[selectedMedia]?.src}
                   id={medias[selectedMedia]?.srcPoster}
                   poster={medias[selectedMedia]?.srcPoster}
-                  maxWidth={[290, 500, 950]}
+                  maxWidth={[270, 550, 750, 950]}
                   videoHeight={['100%']}
                   videoWidth={['100%']}
                   maxHeight={[500, 575, 650]}
@@ -91,14 +96,14 @@ const LightBoxDetail = ({ medias, isOpened, setIsOpened, selectedMedia, setSelec
             </Flex>
             {(selectedMedia < medias?.length - 1 && (
               <Icon
-                color="purple"
-                sizeIcon="display45"
+                color="blue"
+                sizeIcon={['display36', 'display36', 'display48']}
                 onClick={() => goToRight()}
                 style={{ cursor: 'pointer' }}
               >
-                <IconArrowRight />
+                <IconChevronRight />
               </Icon>
-            )) || <Box width={45} height={45} />}
+            )) || <Box width={[36, 36, 48]} height={[36, 36, 48]} />}
           </Flex>
         </Flex>
       )}
