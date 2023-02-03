@@ -22,11 +22,21 @@ export default function Home() {
     <Layout>
       <Head>
         <title>Avistamientos Ovni - Informa de tu experiencia y conoce la de otros</title>
+        <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="Explora o informa sobre los misterios de los avistamientos ovni en nuestro sitio web. Con información actualizada publicada por distintos medios y reportada por nuestros usuarios. Una comunidad curiosa por comprender los fenómenos aéreos anómalos. Investiga y saca tus propias conclusiones sobre la verdad detrás de los ovnis."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          property="og:title"
+          content="Avistamientos Ovni - Informa de tu experiencia y conoce la de otros"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://www.avistamientosovni.es" />
+        <meta
+          property="og:image"
+          content="http://www.avistamientosovni.es/android-chrome-192x192.png"
+        />
       </Head>
 
       <Grid gridTemplateAreas={["'.'"]} gridTemplateColumns={['1fr']}>
