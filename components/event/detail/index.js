@@ -26,7 +26,7 @@ const Detail = ({ dataDetail, setDataDetail, setIsDetailedOpened }) => {
       top="calc(100vh - 66%)"
       position="absolute"
       width="100%"
-      height="auto"
+      height="calc(100vh - 66%)"
       overflow="none"
     >
       <Grid
@@ -39,7 +39,7 @@ const Detail = ({ dataDetail, setDataDetail, setIsDetailedOpened }) => {
         gridGap={2}
       >
         <Box marginRight={[2, 3, 7]} alignSelf="start" position="sticky" width="100%">
-          <Text fontWeight="bold" sizeText="display24" marginBottom={1} color="red">
+          <Text fontWeight="bold" sizeText="display24" marginBottom={1} color="green">
             {dataDetail?.address}
           </Text>
           <Text sizeText="display13">{dataDetail?.sightingDate}</Text>
@@ -73,7 +73,12 @@ const Detail = ({ dataDetail, setDataDetail, setIsDetailedOpened }) => {
           <IconCloseBig />
         </Icon>
       </Grid>
-      <Grid overflow="auto" gridTemplateColumns={['1fr', '1fr 1fr']} gridGap={2}>
+      <Grid
+        gridTemplateColumns={['1fr', '1fr 1fr']}
+        gridGap={2}
+        maxHeight="calc(100% - 104px)"
+        overflow="auto"
+      >
         <GridItem>
           <Box alignItems="center">
             <Text fontWeight="bold">Resumen:</Text>
