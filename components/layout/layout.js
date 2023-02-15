@@ -2,37 +2,24 @@ import { Flex, Box } from '@jellybrains/marvin/dist/atoms/Layout';
 import { Text } from '@jellybrains/marvin/dist/atoms/Typography';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Modal } from '@jellybrains/marvin/dist/molecules/Modal';
-import { Button } from '@jellybrains/marvin/dist/atoms/Button';
+import { Cookies } from '@jellybrains/marvin/dist/molecules/Banners/Cookies';
+import { Overlay } from '@jellybrains/marvin/dist/atoms/Overlay';
 import Nav from './nav';
 import { useGetAllTypesQuery } from '../../api/features/types/api';
 import { getCookie, setCookie } from '../../core/cookies';
 import { GoogleInit } from '../../lib/google';
 
 const Layout = ({ children }) => {
-  /* console.log(`
-              ██████╗ ██╗   ██╗███╗   ██╗██╗
-             ██╔═══██╗██║   ██║████╗  ██║██║
-             ██║   ██║██║   ██║██╔██╗ ██║██║                 ▄▀▀▀▀▀▄
-             ██║   ██║╚██╗ ██╔╝██║╚██╗██║██║                ▐ ▄   ▄ ▌
-             ╚██████╔╝ ╚████╔╝ ██║ ╚████║██║                ▐ ▀▀ ▀▀ ▌
-              ╚═════╝   ╚═══╝  ╚═╝  ╚═══╝╚═╝                 ▀▄ ═ ▄▀
-                                                               ▀▀▀
-
-                        ▄▄▄                  ──────────────                 ▄▀█▀█▀▄
-                       █▀█▀█ █▀█  █▀█ ▄███▄  ─────────────                 ▀▀▀▀▀▀▀▀▀  ▄▄▄▄▄
-                       █▀█▀█ █▀██ █▀█ █▄█▄█             ▄▄                          ▄█▄█▄█▄█▄
-                       █▀█▀█ █▀████▀█ █▄█▄█    ── ▄▄─── ▐▌                             ░░░
-                       █▀█▀█ █▀████▀█ █▄█▄█ ▌██▐▌▐█▐▐▌█▌█▌█▌▌                          ░░░
-    `); */
-
-  const [cookiesModalisOpened, setCookiesModalIsOpened] = useState(false);
+  const [cookiesModalIsOpened, setCookiesModalIsOpened] = useState(false);
   useEffect(() => {
-    if (!getCookie(process.env.NEXT_PUBLIC_COOKIE)) {
-      setCookiesModalIsOpened(true);
-    } else if (process.env.NODE_ENV === 'production') GoogleInit();
-  }, []);
+    const timer = setTimeout(() => {
+      if (!getCookie(process.env.NEXT_PUBLIC_COOKIE)) {
+        setCookiesModalIsOpened(true);
+      } else if (process.env.NODE_ENV === 'production') GoogleInit();
+    }, 2000);
 
+    return () => clearTimeout(timer);
+  }, []);
   const { data: types } = useGetAllTypesQuery();
   return (
     <>
@@ -40,45 +27,50 @@ const Layout = ({ children }) => {
         <Nav items={types?.data} title="Avistamientos Ovni" />
       </Box>
       <main>
-        {cookiesModalisOpened && (
-          <Modal isOpen title="Ya vuelven las cookies">
-            <Modal.Content>
-              <Text>
-                Necesitamos que antes de adentrarte en los datos recopilados sobre los avistamientos
-                ovni, nos des permiso, o no, para saber que nos visitas.
-              </Text>
-              <Text>
-                Como solo pondremos la cookie de sesión y visitas, opcionales, no hay nada que
-                escoger a nivel de preferencias. Puedes consultar la política en:{' '}
-                <Link href="/politica-cookies">Política de cookies</Link>
-              </Text>
-            </Modal.Content>
-            <Modal.Actions>
-              <Flex alignItems="center" justifyContent="center">
-                <Button
-                  marginRight={2}
-                  sizeButton="small"
-                  colorType="green"
-                  onClick={() => {
+        {cookiesModalIsOpened && (
+          <Flex width="50%" alignItems="center" position="relative" zIndex={90}>
+            <Overlay />
+            <Cookies
+              bottom="50%"
+              left="25%"
+              width="50%"
+              background="white"
+              height={190}
+              borderRadius={3}
+              textContent={
+                <>
+                  <Text>
+                    Necesitamos que antes de adentrarte en los datos recopilados sobre los
+                    avistamientos ovni, nos des permiso, o no, para saber que nos visitas.
+                  </Text>
+                  <Text>
+                    Como solo pondremos la cookie de sesión y visitas, opcionales, no hay nada que
+                    escoger a nivel de preferencias. Puedes consultar la política en:{' '}
+                    <Link href="/politica-cookies">Política de cookies</Link>
+                  </Text>
+                </>
+              }
+              buttons={[
+                {
+                  label: 'Aceptar',
+                  action: () => {
                     setCookie(process.env.NEXT_PUBLIC_COOKIE, true, 365);
                     setCookiesModalIsOpened(false);
                     history.go(0);
-                  }}
-                >
-                  Si
-                </Button>
-                <Button
-                  sizeButton="small"
-                  onClick={() => {
+                  },
+                  colorType: 'green',
+                },
+                {
+                  label: 'Denegar',
+                  action: () => {
                     setCookie(process.env.NEXT_PUBLIC_COOKIE, false);
                     setCookiesModalIsOpened(false);
-                  }}
-                >
-                  No
-                </Button>
-              </Flex>
-            </Modal.Actions>
-          </Modal>
+                  },
+                  colorType: '',
+                },
+              ]}
+            />
+          </Flex>
         )}
         {children}
       </main>

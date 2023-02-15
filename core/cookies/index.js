@@ -1,6 +1,6 @@
 export const getCookie = (key) => {
   const name = `${key}=`;
-  const decodedCookie = decodeURIComponent(document.cookie);
+  const decodedCookie = decodeURIComponent(document?.cookie);
   const ca = decodedCookie.split(';');
 
   for (let i = 0; i < ca.length; i += 1) {

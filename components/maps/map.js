@@ -321,7 +321,7 @@ const Map = ({ setIsDetailedOpened, setDataDetail, setValue, defaultValue }) => 
 
   return (
     <>
-      {isLoading ? <Loader /> : null}
+      {/* {isLoading ? <Loader /> : null} */}
       <Box
         id="mapAO"
         style={{

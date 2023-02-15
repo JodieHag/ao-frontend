@@ -25,9 +25,11 @@ export const mapperGeojsonExternalMapInfo = (external, slug) =>
       type: slug,
       properties: {
         iconSize: [40, 40],
-        sightingDate: moment(element?.occurred || element?.sighting_date).format(
-          'DD-MM-YYYY HH:SS'
-        ),
+        sightingDate: moment(
+          element?.occurred || element?.sighting_date,
+          'DD-MM-YYYY HH:SS',
+          true
+        ).format(),
         medias: attributes?.media?.length ? attributes?.media : null,
         shape: attributes?.shape,
         address: `${
@@ -57,7 +59,7 @@ export const mapperGeojsonEventsMapInfo = (events, slug) =>
     return {
       type: attributes?.type?.data?.attributes?.value || slug,
       properties: {
-        sightingDate: moment(attributes?.sightingDate).format('DD-MM-YYYY HH:SS'),
+        sightingDate: moment(attributes?.sightingDate, 'DD-MM-YYYY HH:SS', true).format(),
         shape: attributes?.shape?.data?.attributes?.value ?? 'No definido',
         address: attributes?.address?.text,
         mediasExist: !!attributes.medias?.length,
@@ -78,7 +80,7 @@ export const mapEvents = (events, slug) =>
     return {
       id: element.id,
       attributes: {
-        sightingDate: moment(event?.sightingDate).format('DD-MM-YYYY HH:SS'),
+        sightingDate: moment(event?.sightingDate, 'DD-MM-YYYY HH:SS', true).format(),
         date: new Date(event?.sightingDate),
         address: event?.address
           ? `${
@@ -102,7 +104,11 @@ export const mapEventsExternal = (data, slug) =>
   data?.map((external, index) => ({
     id: `${external?.created_at}_${index}`,
     attributes: {
-      date: moment(external?.occurred || external?.sighting_date).format('DD-MM-YYYY HH:SS'),
+      date: moment(
+        external?.occurred || external?.sighting_date,
+        'DD-MM-YYYY HH:SS',
+        true
+      ).format(),
       address: `${external.city && external.city} ${
         external?.country && `, ${external.country}`
       }  ${external?.state && `, ${external.state}`}`,
@@ -120,7 +126,7 @@ export const columnsTableFormat = [
     type: 'date',
     hideable: true,
     sortable: false,
-    renderCell: (params) => <>{moment(params?.value).format('DD-MM-YYYY HH:SS')}</>,
+    renderCell: (params) => <>{moment(params?.value, 'DD-MM-YYYY HH:SS', true).format()}</>,
   },
   {
     field: 'address',

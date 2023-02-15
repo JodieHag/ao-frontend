@@ -35,7 +35,7 @@ const Nav = ({ items, title }) => {
           Ufo icons created by Victoruler - Flaticon
         </a>
       </Box>
-      <Flex flexDirection="column" padding={[0, 3]}>
+      <Flex as="li" flexDirection="column" padding={[0, 3]}>
         <Text fontFamily="Staatliches" sizeText={['display24', 'display48']} textAlign="center">
           {title}
         </Text>

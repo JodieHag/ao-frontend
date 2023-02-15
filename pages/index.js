@@ -12,6 +12,22 @@ import ufoStalkerScrapped from '../static/data/ufoStalkerScrapped.json';
 import Detail from '../components/event/detail';
 
 export default function Home() {
+  console.log(`
+              ██████╗ ██╗   ██╗███╗   ██╗██╗
+             ██╔═══██╗██║   ██║████╗  ██║██║
+             ██║   ██║██║   ██║██╔██╗ ██║██║                 ▄▀▀▀▀▀▄
+             ██║   ██║╚██╗ ██╔╝██║╚██╗██║██║                ▐ ▄   ▄ ▌
+             ╚██████╔╝ ╚████╔╝ ██║ ╚████║██║                ▐ ▀▀ ▀▀ ▌
+              ╚═════╝   ╚═══╝  ╚═╝  ╚═══╝╚═╝                 ▀▄ ═ ▄▀
+                                                               ▀▀▀
+
+                        ▄▄▄                  ──────────────                 ▄▀█▀█▀▄
+                       █▀█▀█ █▀█  █▀█ ▄███▄  ─────────────                 ▀▀▀▀▀▀▀▀▀  ▄▄▄▄▄
+                       █▀█▀█ █▀██ █▀█ █▄█▄█             ▄▄                          ▄█▄█▄█▄█▄
+                       █▀█▀█ █▀████▀█ █▄█▄█    ── ▄▄─── ▐▌                             ░░░
+                       █▀█▀█ █▀████▀█ █▄█▄█ ▌██▐▌▐█▐▐▌█▌█▌█▌▌                          ░░░
+    `);
+
   const [activeTooltipCount, setActiveTooltipCount] = useState(false);
   const [isDetailedOpened, setIsDetailedOpened] = useState(false);
   const [dataDetail, setDataDetail] = useState(null);

@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="es">
         <Head>
           <meta charSet="utf-8" />
           <meta
@@ -45,7 +45,10 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Staatliches" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Staatliches&display=swap"
+          />
           <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js" async />
           <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
           <script
