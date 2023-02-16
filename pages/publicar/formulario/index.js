@@ -24,6 +24,7 @@ export default function Formulario() {
   const { data: types } = useGetAllTypesQuery();
   const [update, { isLoading, isSuccess, data: successData }] = useAddEventMutation();
   const [placeSearchResult, setPlaceSearchResult] = useState(null);
+  const [isNotBot, setIsNotBot] = useState(false);
   const [placeSearchValue, setPlaceSearchValue] = useState({});
   const [dataForm, setDataForm] = useState({
     slug: v4(),
@@ -68,6 +69,15 @@ export default function Formulario() {
       history.push('/');
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsNotBot(true);
+    }
+  }, []);
+  if (!isNotBot) {
+    return <Loader show />;
+  }
   return (
     <Layout>
       <Head>

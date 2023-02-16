@@ -27,7 +27,7 @@
     "src/**/**/*.{js,jsx}": []
   },
   "dependencies": {
-    "@jellybrains/marvin": "^1.9.1",
+    "@jellybrains/marvin": "1.9.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@styled-system/css": "^5.1.5",
     "@styled-system/prop-types": "^5.1.5",

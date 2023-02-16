@@ -9,16 +9,14 @@ export const TypeAndDatesPublish = ({ types, setDataForm, errors }) => (
       <Radiobox
         name="type"
         id="type"
-        items={
-          types?.data?.map((type) => ({
-            id: type?.attributes?.slug,
-            name: 'type',
-            defaultChecked: type?.attributes?.slug === 'ufo',
-            hasError: false,
-            label: type?.attributes?.value,
-            value: type?.attributes?.slug,
-          })) || []
-        }
+        items={types?.data?.map((type) => ({
+          id: type?.attributes?.slug,
+          name: 'type',
+          defaultChecked: type?.attributes?.slug === 'ufo',
+          hasError: false,
+          label: type?.attributes?.value,
+          value: type?.attributes?.slug,
+        }))}
         onChange={(type, name, value) => {
           const selectedType = value.filter((element) => element?.defaultChecked)[0].value;
           setDataForm((prev) => ({
