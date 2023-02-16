@@ -10,13 +10,13 @@ import LightBoxDetail from '../light-box';
 
 const Detail = ({ dataDetail, setDataDetail, setIsDetailedOpened }) => {
   const images =
-    dataDetail?.medias && JSON?.parse(dataDetail?.medias)?.filter((el) => el.type === 'image');
+    dataDetail?.medias &&
+    JSON?.parse(dataDetail?.medias)?.filter((el) => el.type.includes('image'));
   const videos =
     dataDetail?.medias &&
     JSON?.parse(dataDetail?.medias)?.filter((el) => el.type.includes('video'));
   const [isOpened, setIsOpened] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState(null);
-
   return (
     <Box
       borderRadius={5}

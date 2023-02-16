@@ -7,8 +7,8 @@ import Layout from '../components/layout/layout';
 import Map from '../components/maps/map';
 import { useGetAllEventsQuery } from '../api/features/event/api';
 import { externalData } from '../core/data';
-import UFORC from '../static/data/scrubbed.json';
-import ufoStalkerScrapped from '../static/data/ufoStalkerScrapped.json';
+import UFORC from '../public/static/data/scrubbed.json';
+import ufoStalkerScrapped from '../public/static/data/ufoStalkerScrapped.json';
 import Detail from '../components/event/detail';
 
 export default function Home() {
@@ -48,10 +48,10 @@ export default function Home() {
           content="Avistamientos Ovni - Informa de tu experiencia y conoce la de otros"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://www.avistamientosovni.es" />
+        <meta property="og:url" content="https://www.avistamientosovni.es" />
         <meta
           property="og:image"
-          content="http://www.avistamientosovni.es/android-chrome-192x192.png"
+          content="https://www.avistamientosovni.es/android-chrome-192x192.png"
         />
       </Head>
 

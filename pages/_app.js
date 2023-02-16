@@ -7,7 +7,7 @@ import { GlobalStyles } from '@jellybrains/marvin/dist/GlobalStyles';
 import { theme } from '@jellybrains/marvin/dist/theme';
 import { Provider } from 'react-redux';
 import { store } from '../api/store';
-import English from '../static/compiled-locales/en.json';
+import English from '../public/static/compiled-locales/en.json';
 
 export const MyApp = ({ Component, pageProps }) => {
   const { locale } = useRouter();

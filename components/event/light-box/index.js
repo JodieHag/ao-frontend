@@ -72,7 +72,7 @@ const LightBoxDetail = ({ medias, isOpened, setIsOpened, selectedMedia, setSelec
               height={['100%']}
               justifyContent="center"
             >
-              {medias[selectedMedia]?.type === 'image' && (
+              {medias[selectedMedia]?.type?.includes('image') && (
                 <Image
                   src={medias[selectedMedia].src}
                   maxWidth={[270, 550, 750, 950]}

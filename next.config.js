@@ -21,8 +21,9 @@ const nextConfig = {
   // defaultLocale: 'es',
   // },
   swcMinify: true,
-  experimental: {
-    outputStandalone: true,
+  output: 'standalone',
+  images: {
+    domains: ['res.cloudinary.com'],
   },
 };
 

@@ -10,8 +10,8 @@
     "develop": "next dev",
     "deploy": "next build && next export",
     "lint:fix": "next lint --fix",
-    "compile:i18n": "formatjs compile-folder --ast --format simple static/locales static/compiled-locales",
-    "extract:i18n": "formatjs extract '{pages,components,sections}/**/*.{js,ts,tsx}' --format simple --id-interpolation-pattern '[sha512:contenthash:base64:6]' --out-file static/locales/en.json",
+    "compile:i18n": "formatjs compile-folder --ast --format simple public/static/locales static/compiled-locales",
+    "extract:i18n": "formatjs extract '{pages,components,sections}/**/*.{js,ts,tsx}' --format simple --id-interpolation-pattern '[sha512:contenthash:base64:6]' --out-file public/static/locales/en.json",
     "i18n": "yarn run compile:i18n",
     "build": "next build",
     "heroku-prebuild": "node ./bin/auth-npm.js",
@@ -27,7 +27,7 @@
     "src/**/**/*.{js,jsx}": []
   },
   "dependencies": {
-    "@jellybrains/marvin": "^1.8.3",
+    "@jellybrains/marvin": "^1.9.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@styled-system/css": "^5.1.5",
     "@styled-system/prop-types": "^5.1.5",
@@ -38,6 +38,7 @@
     "intl": "^1.2.5",
     "moment": "^2.29.4",
     "next": "^13.1.4",
+    "next-redux-wrapper": "^8.1.0",
     "qs": "^6.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -45,7 +46,8 @@
     "react-redux": "^8.0.5",
     "sharp": "^0.31.3",
     "styled-components": "^5.3.6",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",

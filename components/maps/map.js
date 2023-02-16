@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Loader } from '@jellybrains/marvin/dist/atoms/Loader';
 import { Box } from '@jellybrains/marvin/dist/atoms/Layout';
-import ufoImg from '../../static/media/img/ufo.png';
+import ufoImg from '../../public/static/media/img/ufo.png';
 import { useGetEventsByLocationQuery } from '../../api/features/event/api';
 import { createMap } from './config';
 import {

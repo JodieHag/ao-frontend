@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+import { HYDRATE } from 'next-redux-wrapper';
 
 const API_URL = process.env.NEXT_PUBLIC_API_BASE || process.env.API_BASE;
 
@@ -171,6 +172,11 @@ export function provideListTag(type, result) {
 
 export const api = createApi({
   baseQuery: fetchWithAuth,
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === HYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
   refetchOnReconnect: true,
   tagTypes: Object.values(tagTypes),
   endpoints: () => ({}),

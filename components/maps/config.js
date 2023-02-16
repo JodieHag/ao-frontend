@@ -1,7 +1,7 @@
-import ufoImg from '../../static/media/img/ufo.png';
-import abductionImg from '../../static/media/img/abduction.png';
-import entityImg from '../../static/media/img/alien.png';
-import contactImg from '../../static/media/img/contact.png';
+import ufoImg from '../../public/static/media/img/ufo.png';
+import abductionImg from '../../public/static/media/img/abduction.png';
+import entityImg from '../../public/static/media/img/alien.png';
+import contactImg from '../../public/static/media/img/contact.png';
 
 export const createMap = ({ zoom, center }) => {
   let map;

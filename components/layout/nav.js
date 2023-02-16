@@ -2,12 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Box, Flex } from '@jellybrains/marvin/dist/atoms/Layout';
 import Image from 'next/image';
-import { Button } from '@jellybrains/marvin/dist/atoms/Button';
 import { Text } from '@jellybrains/marvin/dist/atoms/Typography';
 import { useRouter } from 'next/router';
 import { Icon } from '@jellybrains/marvin/dist/atoms/Icon';
 import { IconEdit } from '@jellybrains/marvin/dist/atoms/Icons';
-import logo from '../../static/media/logos/logo_blue.gif';
+import logo from '../../public/static/media/logos/logo_blue.gif';
 import DeviceDetector from '../../core/device';
 
 const Nav = ({ items, title }) => {
@@ -39,7 +38,7 @@ const Nav = ({ items, title }) => {
         <Text fontFamily="Staatliches" sizeText={['display24', 'display48']} textAlign="center">
           {title}
         </Text>
-        {/* {pathname !== '/report' && (
+        {/* {pathname !== '/publicar' && (
           <Flex as="ul" alignItems="center" justifyContent="center" flexWrap="wrap">
             {items?.map((category) => (
               <li key={category.id}>
@@ -74,14 +73,11 @@ const Nav = ({ items, title }) => {
           </Flex>
         )} */}
       </Flex>
-      {pathname !== '/report' && (
+      {!pathname.includes('/publicar') && (
         <Box as="li" padding={2}>
-          <Button
+          <Link
             colorType="purple"
-            onClick={() => {
-              window.location =
-                'mailto:hello@avistamientosovni.es?subject=Informar&body=Fecha-Lugar-Typo(ufo/abducción/contacto/entidad)-Duración-Descripción-Forma-Fotos/Videos';
-            }}
+            href="/publicar"
             rounded={isMobile}
             width={isMobile ? '35px' : 'inherit'}
             height={isMobile ? '35px' : 'inherit'}
@@ -93,7 +89,7 @@ const Nav = ({ items, title }) => {
             ) : (
               <Text style={{ cursor: 'pointer' }}>Informar avistamiento</Text>
             )}
-          </Button>
+          </Link>
         </Box>
       )}
     </Flex>

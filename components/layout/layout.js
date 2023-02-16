@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Cookies } from '@jellybrains/marvin/dist/molecules/Banners/Cookies';
 import { Overlay } from '@jellybrains/marvin/dist/atoms/Overlay';
+import { useRouter } from 'next/router';
 import Nav from './nav';
 import { useGetAllTypesQuery } from '../../api/features/types/api';
 import { getCookie, setCookie } from '../../core/cookies';
@@ -11,6 +12,7 @@ import { GoogleInit } from '../../lib/google';
 
 const Layout = ({ children }) => {
   const [cookiesModalIsOpened, setCookiesModalIsOpened] = useState(false);
+  const history = useRouter();
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!getCookie(process.env.NEXT_PUBLIC_COOKIE)) {
