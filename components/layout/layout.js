@@ -28,14 +28,14 @@ const Layout = ({ children }) => {
       </Box>
       <main>
         {cookiesModalIsOpened && (
-          <Flex width="50%" alignItems="center" position="relative" zIndex={90}>
+          <Flex width={['100%', '100%', '50%']} alignItems="center" position="relative" zIndex={90}>
             <Overlay />
             <Cookies
-              bottom="50%"
-              left="25%"
-              width="50%"
+              bottom={[0, 0, '50%']}
+              left={[0, 0, '25%']}
+              width={['100%', '100%', '50%']}
               background="white"
-              height={190}
+              height={['auto', 'auto', 190]}
               borderRadius={3}
               textContent={
                 <>
