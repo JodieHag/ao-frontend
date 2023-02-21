@@ -6,6 +6,7 @@ import { Text } from '@jellybrains/marvin/dist/atoms/Typography';
 import { useRouter } from 'next/router';
 import { Icon } from '@jellybrains/marvin/dist/atoms/Icon';
 import { IconEdit } from '@jellybrains/marvin/dist/atoms/Icons';
+import { Button } from '@jellybrains/marvin/dist/atoms/Button';
 import logo from '../../public/static/media/logos/logo_blue.gif';
 import DeviceDetector from '../../core/device';
 
@@ -87,7 +88,9 @@ const Nav = ({ items, title }) => {
                 <IconEdit />
               </Icon>
             ) : (
-              <Text style={{ cursor: 'pointer' }}>Informar avistamiento</Text>
+              <Button action={(event) => {}} colorType="purple">
+                <Text style={{ cursor: 'pointer' }}>Informar avistamiento</Text>
+              </Button>
             )}
           </Link>
         </Box>
