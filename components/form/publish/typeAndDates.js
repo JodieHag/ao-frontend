@@ -46,9 +46,9 @@ export const TypeAndDatesPublish = ({ types, setDataForm, errors }) => (
       <Input
         name="durationTime"
         type="time"
-        defaultValue="00:00"
+        defaultValue="00:00:00"
         sizeInput="small"
-        onChange={(name, value) => setDataForm((prev) => ({ ...prev, [name]: value }))}
+        onChange={(name, value) => setDataForm((prev) => ({ ...prev, [name]: `${value}:00` }))}
       />
       <Text sizeText="display12">El formato es de horas:minutos </Text>
     </Field>

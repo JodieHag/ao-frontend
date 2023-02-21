@@ -13,7 +13,7 @@ import { GoogleInit } from '../../lib/google';
 const Layout = ({ children }) => {
   const [cookiesModalIsOpened, setCookiesModalIsOpened] = useState(false);
   const history = useRouter();
-  console.log(history);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!getCookie(process.env.NEXT_PUBLIC_COOKIE)) {
